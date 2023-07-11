@@ -1,0 +1,22 @@
+<h2>Edit Loan Plan</h2>
+
+<!-- Form to edit loan plan details -->
+<form (ngSubmit)="submitForm()" #loanPlanForm="ngForm">
+  <div>
+    <label for="planName">Plan Name:</label>
+    <input type="text" id="planName" name="planName" [(ngModel)]="loanPlan.planName" required>
+  </div>
+
+  <div>
+    <label for="validity">Validity:</label>
+    <input type="text" id="validity" name="validity" [(ngModel)]="loanPlan.validity" required>
+  </div>
+
+  <button type="submit" [disabled]="loanPlanForm.invalid">Submit</button>
+</form>
+
+<!-- Display acknowledgement if submitted -->
+<div *ngIf="submitted">
+  <h3>Acknowledgement</h3>
+  <p>Loan Plan Updated Successfully!</p>
+</div>

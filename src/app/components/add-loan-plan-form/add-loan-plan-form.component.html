@@ -1,0 +1,35 @@
+<h2>Add Loan Plan</h2>
+
+<form [formGroup]="loanPlanForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="planType">Plan Type:</label>
+    <select formControlName="planType" id="planType">
+      <option value="personal">Personal Loan</option>
+      <option value="home">Home Loan</option>
+      <option value="car">Car Loan</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="tenure">Tenure:</label>
+    <input type="range" formControlName="tenure" id="tenure" min="1" max="12">
+    <span>{{ loanPlanForm.value.tenure }}</span>
+  </div>
+
+  <div>
+    <label for="interestRate">Interest Rate:</label>
+    <input type="range" formControlName="interestRate" id="interestRate" min="0" max="20">
+    <span>{{ loanPlanForm.value.interestRate }}%</span>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="loanPlanForm.invalid">Submit</button>
+  </div>
+</form>
+
+<div *ngIf="submitted">
+  <h3>Loan Plan Added Successfully!</h3>
+  
+  <p>Total Payable: {{ loanPlan.totalPayable }}</p>
+  <p>EMI Amount: {{ loanPlan.emi }}</p>
+</div>

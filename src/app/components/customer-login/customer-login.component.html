@@ -1,0 +1,20 @@
+<!-- customer-login.component.html -->
+<div class="login-container">
+  <h2>Customer Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <input formControlName="email">
+    <span *ngIf="email.invalid && email.touched">
+        Your email does not look right
+    </span>
+  
+  
+    <input formControlName="password">
+    <span *ngIf="password.invalid && password.touched">
+        That password sucks...
+    </span>
+
+    <div>
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </div>
+  </form>
+</div>

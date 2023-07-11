@@ -1,0 +1,65 @@
+/* add-loan-plan-form.component.css */
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  select,
+  input[type="range"] {
+    width: 100%;
+  }
+  
+  input[type="range"] {
+    display: block;
+    margin-top: 5px;
+  }
+  
+  span {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  div[hidden] {
+    display: none;
+  }
+  
+  h3 {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  p {
+    margin: 5px 0;
+  }
+  
+  
