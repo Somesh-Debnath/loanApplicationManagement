@@ -16,4 +16,8 @@ export class AddLoanPlanService {
   public editLoanPlan(loanPlan:LoanPlan){
     return this.http.put("http://localhost:9093/loanplan",loanPlan,{responseType:'text' as 'json'});
   }
+
+  getInterestRates() {
+    return this.http.get('http://localhost:9093/api/interestrates');
+  }
 }

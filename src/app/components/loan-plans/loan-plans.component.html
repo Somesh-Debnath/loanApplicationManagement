@@ -1,32 +1,30 @@
-<h2>Loan Plans</h2>
-
-<!-- <div class="form-check form-switch mb-3">
-  <input class="form-check-input" type="radio" name="viewType" id="customerView" [(ngModel)]="selectedView" value="customer">
-  <label class="form-check-label" for="customerView">Customer View</label>
-
-  <input class="form-check-input" type="radio" name="viewType" id="managerView" [(ngModel)]="selectedView" value="manager">
-  <label class="form-check-label" for="managerView">Manager View</label>
-</div> -->
-
-<div *ngIf="selectedView === 'customer'">
-  <div class="card mb-3" *ngFor="let loanPlan of loanPlans">
-    <div class="card-body">
-      <h5 class="card-title">{{ loanPlan.title }}</h5>
-      <p class="card-text">Interest Rate: {{ loanPlan.interestRate }}</p>
-      <p class="card-text">Tenure: {{ loanPlan.tenure }}</p>
-      <!-- Add more loan plan details here -->
+<div class="container">
+  <h2 class="text-center">Loan Plans</h2>
+  
+  <!-- <div class="form-check form-switch">
+    <input class="form-check-input" type="radio" name="viewType" id="customerView" checked>
+    <label class="form-check-label" for="customerView">Customer View</label>
+    
+    <input class="form-check-input" type="radio" name="viewType" id="managerView">
+    <label class="form-check-label" for="managerView">Bank Manager View</label>
+  </div> -->
+  
+  <div class="row">
+    <div class="col-sm-6 col-md-4" *ngFor="let loanPlan of loanPlans">
+      <div class="card loan-card">
+        <div class="card-body">
+          <h5 class="card-title">{{ loanPlan.loanPlanName }}</h5>
+          <p class="card-text">Principal Amount: {{ loanPlan.principalAmount }}</p>
+          <p class="card-text">Tenure: {{ loanPlan.tenure }}</p>
+          <p class="card-text">Interest Rate: {{ loanPlan.interestRate }}%</p>
+          <p class="card-text">EMI: {{ loanPlan.emi }}</p>
+          <p class="card-text">Plan Validity: {{ loanPlan.planValidity }}</p>
+          
+          <button class="btn btn-primary" *ngIf="isManagerView" (click)="editLoanPlan(loanPlan.planId)">
+            Edit
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<!-- 
-<div *ngIf="selectedView === 'manager'">
-  <div class="card mb-3" *ngFor="let loanPlan of loanPlans">
-    <div class="card-body">
-      <h5 class="card-title">{{ loanPlan.title }}</h5>
-      <p class="card-text">Interest Rate: {{ loanPlan.interestRate }}</p>
-      <p class="card-text">Tenure: {{ loanPlan.tenure }}</p>
-
-      <a [routerLink]="['/edit-loan-plan', loanPlan.id]" class="btn btn-primary">Edit</a>
-    </div>
-  </div>
-</div> -->

@@ -4,6 +4,7 @@ h2 {
     color: #333;
     font-size: 24px;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
   
   form {
@@ -36,18 +37,12 @@ h2 {
     color: #888;
   }
   
-  button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  button[type="submit"]:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+
   
   div[hidden] {
     display: none;
