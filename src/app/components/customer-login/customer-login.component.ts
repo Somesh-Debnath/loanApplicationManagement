@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 
@@ -17,7 +18,7 @@ export class CustomerLoginComponent implements OnInit {
     email:'',
     password:''
   }
-  constructor(private formBuilder: FormBuilder, private loginService:LoginService, private registerService:RegistrationService) {}
+  constructor(private formBuilder: FormBuilder, private loginService:LoginService, private router:Router) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -50,25 +51,11 @@ export class CustomerLoginComponent implements OnInit {
     this.credentials.email=this.loginForm.value.email;
     this.credentials.password=this.loginForm.value.password;
 
-    this.registerService.doRegister(this.credentials).subscribe(
-      (response:any)=>{
-        console.log(response);
-        if(response.status==200){
-          alert("Registration successful");
-        }
-      },
-      (error)=>{
-        console.log(error);
-        alert("Something went wrong");
-      }
-    )
-
-    // this.loginService.doLogin(this.credentials).subscribe(
+    // this.registerService.doRegister(this.credentials).subscribe(
     //   (response:any)=>{
     //     console.log(response);
     //     if(response.status==200){
-    //       alert("Login successful");
-    //       this.loginService.loginUser(response.token);
+    //       alert("Registration successful");
     //     }
     //   },
     //   (error)=>{
@@ -77,6 +64,24 @@ export class CustomerLoginComponent implements OnInit {
     //   }
     // )
 
+    this.loginService.doLogin(this.credentials).subscribe(
+      (response:any)=>{
+        console.log(response);
+        if(response.status==200){
+          alert("Login successful");
+          this.loginService.loginUser(response.token);
+        }
+      },
+      (error)=>{
+        console.log(error);
+        alert("Something went wrong");
+      }
+    )
+
     console.log(this.loginForm.value);
+  }
+
+  navigateToRegister(){
+    this.router.navigate(['/register']);
   }
 }

@@ -41,6 +41,24 @@
 
   <form [formGroup]="loanPlanForm" (ngSubmit)="onSubmit()">
     <div>
+      <label for="planName">Loan Plan Name:</label>
+      <input
+        type="text"
+        formControlName="planName"
+        id="planName"
+        placeholder="Enter Loan Plan Name"
+      />
+    </div>
+    <div>
+      <label for="principalAmount">Principal Amount:</label>
+      <input
+        type="number"
+        formControlName="principalAmount"
+        id="principalAmount"
+        placeholder="Enter Principal Amount"
+      />
+    </div>
+    <div>
       <label for="loanType">Loan Type:</label>
       <select formControlName="loanType" id="loanType">
         <option *ngFor="let loanType of interestRates" [value]="loanType.id">
@@ -73,37 +91,54 @@
       />
       <span>{{ loanPlanForm.value.interestRate }}%</span>
     </div>
-
+    <div>
+      <label for="planValidity">Plan Validity:</label>
+      <input
+        type="date"
+        formControlName="planValidity"
+        id="planValidity"
+        placeholder="Enter Plan Validity"
+      />
+    </div>
     <div>
       <button type="submit" class="btn btn-secondary">Submit</button>
     </div>
   </form>
 
-  <div *ngIf="submitted">
-    <h3>Loan Plan Added Successfully!</h3>
-
-    <p>Total Payable: {{ loanPlan?.totalPayable }}</p>
-    <p>EMI Amount: {{ loanPlan?.emi }}</p>
-  </div>
-
   <ng-template #demoModal let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>
-          <div class="input-group">
-            <input id="dateOfBirth" name="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #dp="ngbDatepicker">
-            <button type="button" class="btn btn-outline-secondary bi bi-calendar" (click)="dp.toggle()"></button>
+    <!-- Modal content here -->
+    <div #demoModal id="demoModal" class="modal fade"  role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Loan Plan Added Successfully!</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              (click)="submitted = false"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Total Payable: {{ loanPlan.totalPayable }}</p>
+            <p>EMI Amount: {{ loanPlan.emi }}</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="submitted = false"
+            >
+              Close
+            </button>
           </div>
         </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      </div>
     </div>
   </ng-template>
+  
 </div>

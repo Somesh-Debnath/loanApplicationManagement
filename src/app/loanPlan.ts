@@ -3,14 +3,15 @@ export class LoanPlan {
         
         public loanPlanName: string,
         public principalAmount: number,
-        public interestRate: number,
         public tenure: number,
         public emi: number,
         public planValidity: string,
-        public planAddedOn: string,
-        public interestAmount: number,
-        public totalPayable: number,
+        public interestAmount?: number,
+        public totalPayable?: number,
         public planId?: number,
+        public loanTypeId?: number,
+        public interestRate?: number,
+        public planAddedOn?: string,
     ){}
 }
 
