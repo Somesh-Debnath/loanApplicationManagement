@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AddLoanPlanFormComponent } from './components/add-loan-plan-form/add-loan-plan-form.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { BankManagerLoginComponent } from './components/bank-manager-login/bank-manager-login.component';
 import { CustomerLoginComponent } from './components/customer-login/customer-login.component';
@@ -34,7 +33,6 @@ import { RegistrationComponent } from './components/registration/registration.co
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule,
     HttpClientModule
   ],
   providers: [],

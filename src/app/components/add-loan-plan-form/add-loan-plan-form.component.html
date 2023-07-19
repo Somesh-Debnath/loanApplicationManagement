@@ -1,144 +1,217 @@
 <!-- <h2>Add Loan Plan</h2>
 
+
+
+
 <form [formGroup]="loanPlanForm" (ngSubmit)="onSubmit()">
+
   <div>
+
     <label for="loanType">Loan Type:</label>
+
     <select formControlName="loanType" id="loanType">
+
       <option *ngFor="let loanType of interestRates" [value]="loanType.id">
+
         {{ loanType.loanType }}
+
         {{ loanType.baseInterestRate }}%
+
       </option>
+
     </select>
+
   </div>
-  
+
+ 
+
+
+
 
   <div>
+
     <label for="tenure">Tenure:</label>
+
     <input type="range" formControlName="tenure" id="tenure" min="1" max="12">
+
     <span>{{ loanPlanForm.value.tenure }}</span>
+
   </div>
 
+
+
+
   <div>
+
     <label for="interestRate">Interest Rate:</label>
+
     <input type="range" formControlName="interestRate" id="interestRate" min="0" max="20">
+
     <span>{{ loanPlanForm.value.interestRate }}%</span>
+
   </div>
 
+
+
+
   <div>
+
     <button type="submit" [disabled]="loanPlanForm.invalid">Submit</button>
+
   </div>
+
 </form>
 
+
+
+
 <div *ngIf="submitted">
+
   <h3>Loan Plan Added Successfully!</h3>
-  
+
+ 
+
   <p>Total Payable: {{ loanPlan.totalPayable }}</p>
+
   <p>EMI Amount: {{ loanPlan.emi }}</p>
+
 </div> -->
 
 <div class="container">
   <h2>Add Loan Plan</h2>
 
-  <form [formGroup]="loanPlanForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="planName">Loan Plan Name:</label>
-      <input
-        type="text"
-        formControlName="planName"
-        id="planName"
-        placeholder="Enter Loan Plan Name"
+  <div class="row">
+    <div class="col">
+      <img
+        src="../../../assets/images/addloanplan.jpg"
+        alt="Loan Plan Image"
+        width="100%"
       />
-    </div>
-    <div>
-      <label for="principalAmount">Principal Amount:</label>
-      <input
-        type="number"
-        formControlName="principalAmount"
-        id="principalAmount"
-        placeholder="Enter Principal Amount"
-      />
-    </div>
-    <div>
-      <label for="loanType">Loan Type:</label>
-      <select formControlName="loanType" id="loanType">
-        <option *ngFor="let loanType of interestRates" [value]="loanType.id">
-          {{ loanType.loanType }}
-          {{ loanType.baseInterestRate }}%
-        </option>
-      </select>
     </div>
 
-    <div>
-      <label for="tenure">Tenure:</label>
-      <input
-        type="range"
-        formControlName="tenure"
-        id="tenure"
-        min="1"
-        max="12"
-      />
-      <span>{{ loanPlanForm.value.tenure }}</span>
-    </div>
+    <div class="col">
+      <form [formGroup]="loanPlanForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="planName">Loan Plan Name:</label>
 
-    <div>
-      <label for="interestRate">Interest Rate:</label>
-      <input
-        type="range"
-        formControlName="interestRate"
-        id="interestRate"
-        min="0"
-        max="20"
-      />
-      <span>{{ loanPlanForm.value.interestRate }}%</span>
-    </div>
-    <div>
-      <label for="planValidity">Plan Validity:</label>
-      <input
-        type="date"
-        formControlName="planValidity"
-        id="planValidity"
-        placeholder="Enter Plan Validity"
-      />
-    </div>
-    <div>
-      <button type="submit" class="btn btn-secondary">Submit</button>
-    </div>
-  </form>
+          <input
+            type="text"
+            formControlName="planName"
+            id="planName"
+            placeholder="Enter Loan Plan Name"
+          />
+        </div>
 
-  <ng-template #demoModal let-modal>
-    <!-- Modal content here -->
-    <div #demoModal id="demoModal" class="modal fade"  role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Loan Plan Added Successfully!</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              (click)="submitted = false"
+        <div>
+          <label for="principalAmount">Principal Amount:</label>
+
+          <input
+            type="number"
+            formControlName="principalAmount"
+            id="principalAmount"
+            placeholder="Enter Principal Amount"
+          />
+        </div>
+
+        <div>
+          <label for="loanType">Loan Type:</label>
+
+          <select formControlName="loanType" id="loanType">
+            <option
+              *ngFor="let loanType of interestRates"
+              [value]="loanType.id"
             >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Total Payable: {{ loanPlan.totalPayable }}</p>
-            <p>EMI Amount: {{ loanPlan.emi }}</p>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-              (click)="submitted = false"
-            >
-              Close
-            </button>
+              {{ loanType.loanType }}
+
+              {{ loanType.baseInterestRate }}%
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label for="tenure">Tenure:</label>
+
+          <input
+            type="range"
+            formControlName="tenure"
+            id="tenure"
+            min="1"
+            max="12"
+          />
+
+          <span>{{ loanPlanForm.value.tenure }}</span>
+        </div>
+
+        <div>
+          <label for="interestRate">Interest Rate:</label>
+
+          <input
+            type="range"
+            formControlName="interestRate"
+            id="interestRate"
+            min="0"
+            max="20"
+          />
+
+          <span>{{ loanPlanForm.value.interestRate }}%</span>
+        </div>
+
+        <div>
+          <label for="planValidity">Plan Validity:</label>
+
+          <input
+            type="date"
+            formControlName="planValidity"
+            id="planValidity"
+            placeholder="Enter Plan Validity"
+          />
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-secondary">Submit</button>
+        </div>
+      </form>
+
+      <ng-template #demoModal let-modal>
+        <!-- Modal content here -->
+
+        <div #demoModal id="demoModal" class="modal fade" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Loan Plan Added Successfully!</h5>
+
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  (click)="submitted = false"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-body">
+                <p>Total Payable: {{ loanPlan.totalPayable }}</p>
+
+                <p>EMI Amount: {{ loanPlan.emi }}</p>
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                  (click)="submitted = false"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </ng-template>
     </div>
-  </ng-template>
-  
+  </div>
 </div>

@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/co
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoanPlan, interestRates } from 'src/app/loanPlan';
 import { AddLoanPlanService } from 'src/app/services/add-loan-plan.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-loan-plan-form',
