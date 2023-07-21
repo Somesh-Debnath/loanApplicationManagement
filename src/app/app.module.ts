@@ -8,13 +8,14 @@ import { AddLoanPlanFormComponent } from './components/add-loan-plan-form/add-lo
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BankManagerLoginComponent } from './components/bank-manager-login/bank-manager-login.component';
-import { CustomerLoginComponent } from './components/customer-login/customer-login.component';
+
 import { EditLoanPlanFormComponent } from './components/edit-loan-plan-form/edit-loan-plan-form.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoanPlansComponent } from './components/loan-plans/loan-plans.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { AuthGuard } from './auth/AuthGuard';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     LoanPlansComponent,
     EditLoanPlanFormComponent,
     NavbarComponent,
-    BankManagerLoginComponent,
-    CustomerLoginComponent,
+    AuthComponent,
     HomeComponent,
     RegistrationComponent
   ],

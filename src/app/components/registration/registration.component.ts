@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
   credentials={
     name:'',
     email:'',
-    password:''
+    password:'',
   }
   constructor(private formBuilder: FormBuilder, private router:Router, private registerService:RegistrationService) {}
 
@@ -56,6 +56,7 @@ export class RegistrationComponent implements OnInit {
     this.loading = true;
     this.credentials.email=this.registerForm.value.email;
     this.credentials.password=this.registerForm.value.password;
+    this.credentials.name=this.registerForm.value.name;
 
     this.registerService.doRegister(this.credentials).subscribe(
       (response:any)=>{

@@ -22,9 +22,7 @@
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password" required>
-          <span style="color: red;" *ngIf="password.invalid && password.touched">
-            Password must contain at least one letter and one number
-        </span>
+          
         </div>
         <button type="submit" class="btn btn-primary btn-block login-btn" [disabled]="loginForm.invalid">Login</button>
       </form>

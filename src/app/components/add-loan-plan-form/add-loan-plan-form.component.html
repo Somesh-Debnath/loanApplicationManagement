@@ -1,101 +1,23 @@
-<!-- <h2>Add Loan Plan</h2>
+<h1 class="text-4xl text-center font-bold my-3">Welcome !</h1>
+    <p class="text-sm text-center font-semibold leading-4">
+      Add a new loan plan to the system.
+    </p>
 
-
-
-
-<form [formGroup]="loanPlanForm" (ngSubmit)="onSubmit()">
-
-  <div>
-
-    <label for="loanType">Loan Type:</label>
-
-    <select formControlName="loanType" id="loanType">
-
-      <option *ngFor="let loanType of interestRates" [value]="loanType.id">
-
-        {{ loanType.loanType }}
-
-        {{ loanType.baseInterestRate }}%
-
-      </option>
-
-    </select>
-
+<div class="flex">
+  <div class="max-w-3xl items-center pl-16 pr-12 h-screen">
+    <img class="object-contain" src="../../../assets/images/addloanplan.jpg" alt="userlogin" />
   </div>
-
- 
-
-
-
-
-  <div>
-
-    <label for="tenure">Tenure:</label>
-
-    <input type="range" formControlName="tenure" id="tenure" min="1" max="12">
-
-    <span>{{ loanPlanForm.value.tenure }}</span>
-
-  </div>
-
-
-
-
-  <div>
-
-    <label for="interestRate">Interest Rate:</label>
-
-    <input type="range" formControlName="interestRate" id="interestRate" min="0" max="20">
-
-    <span>{{ loanPlanForm.value.interestRate }}%</span>
-
-  </div>
-
-
-
-
-  <div>
-
-    <button type="submit" [disabled]="loanPlanForm.invalid">Submit</button>
-
-  </div>
-
-</form>
-
-
-
-
-<div *ngIf="submitted">
-
-  <h3>Loan Plan Added Successfully!</h3>
-
- 
-
-  <p>Total Payable: {{ loanPlan.totalPayable }}</p>
-
-  <p>EMI Amount: {{ loanPlan.emi }}</p>
-
-</div> -->
-
-<div class="container">
-  <h2>Add Loan Plan</h2>
-
-  <div class="row">
-    <div class="col">
-      <img
-        src="../../../assets/images/addloanplan.jpg"
-        alt="Loan Plan Image"
-        width="100%"
-      />
-    </div>
-
-    <div class="col">
+  
+  <div class="flex flex-col pt-5 pl-24  max-w-lg">
       <form [formGroup]="loanPlanForm" (ngSubmit)="onSubmit()">
         <div>
           <label for="planName">Loan Plan Name:</label>
 
           <input
             type="text"
+            class="bg-white rounded-full p-2 text-gray-500 mb-2
+            border-[1.5px] border-[#00A3FE] 
+            w-full outline-none"
             formControlName="planName"
             id="planName"
             placeholder="Enter Loan Plan Name"
@@ -108,6 +30,9 @@
           <input
             type="number"
             formControlName="principalAmount"
+            class="bg-white rounded-full p-2 text-gray-500 mb-2
+            border-[1.5px] border-[#00A3FE] 
+            w-full outline-none"
             id="principalAmount"
             placeholder="Enter Principal Amount"
           />
@@ -163,17 +88,20 @@
             type="date"
             formControlName="planValidity"
             id="planValidity"
+            class="bg-white rounded-full p-2 text-gray-500 mb-2
+            border-[1.5px] border-[#00A3FE] 
+            w-full outline-none"
             placeholder="Enter Plan Validity"
           />
         </div>
 
         <div>
-          <button type="submit" class="btn btn-secondary">Submit</button>
+          <button type="submit" class="bg-[#00A3FE] mt-3 px-20 py-3 rounded-2xl
+          text-white font-semibold">Submit</button>
         </div>
       </form>
 
       <ng-template #demoModal let-modal>
-        <!-- Modal content here -->
 
         <div #demoModal id="demoModal" class="modal fade" role="dialog">
           <div class="modal-dialog" role="document">
@@ -212,6 +140,5 @@
           </div>
         </div>
       </ng-template>
-    </div>
-  </div>
+
 </div>
