@@ -7,3 +7,9 @@ export class Customer{
         
     ){}
 }
+
+export class UserRole{
+    constructor(
+        public value:string,
+    ){}
+}

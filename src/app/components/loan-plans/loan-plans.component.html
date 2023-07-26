@@ -1,23 +1,22 @@
 <div class="container">
-  <h2 class="text-center">Loan Plans</h2>
-  
-  
-  <div class="row">
-    <div class="col-sm-6 col-md-4" *ngFor="let loanPlan of loanPlans">
-      <div class="card loan-card">
-        <div class="card-body">
-          <h5 class="card-title">{{ loanPlan.loanPlanName }}</h5>
-          <p class="card-text">Principal Amount: {{ loanPlan.principalAmount }}</p>
-          <p class="card-text">Tenure: {{ loanPlan.tenure }}</p>
-          <p class="card-text">Interest Rate: {{ loanPlan.interestRate }}%</p>
-          <p class="card-text">EMI: {{ loanPlan.emi }}</p>
-          <p class="card-text">Plan Validity: {{ loanPlan.planValidity }}</p>
-          
-          <button class="btn btn-primary" *ngIf="(isManagerView$ | async)" (click)="editLoanPlan(loanPlan.planId)">
-            Edit
-          </button>
-        </div>
-      </div>
+  <h2 class="text-center text-3xl font-bold my-4">Loan Plans</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="bg-white rounded-lg shadow-md p-4" *ngFor="let loanPlan of loanPlans">
+      <h5 class="text-xl font-semibold mb-2">{{ loanPlan.planName }}</h5>
+      <p class="mb-2"><strong>Principal Amount:</strong> {{ loanPlan.principalAmount }}</p>
+      <p class="mb-2"><strong>Tenure:</strong> {{ loanPlan.tenure }}</p>
+      <p class="mb-2"><strong>Interest Rate:</strong> {{ loanPlan.interestRate }}%</p>
+      <p class="mb-2"><strong>EMI:</strong> {{ loanPlan.emi }}</p>
+      <p class="mb-2"><strong>Plan Validity:</strong> {{ loanPlan.planValidity }}</p>
+
+      <button
+        class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        *ngIf="(isManagerView$ | async)"
+        (click)="editLoanPlan(loanPlan.planId)"
+      >
+        Edit
+      </button>
     </div>
   </div>
 </div>

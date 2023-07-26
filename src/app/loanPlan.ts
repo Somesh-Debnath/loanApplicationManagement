@@ -1,7 +1,6 @@
 export class LoanPlan {
     constructor(
         
-        public loanPlanName: string,
         public principalAmount: number,
         public tenure: number,
         public emi: number,
@@ -12,6 +11,8 @@ export class LoanPlan {
         public loanTypeId?: number,
         public interestRate?: number,
         public planAddedOn?: string,
+        public planName?: string,
+        public validity?: string,
     ){}
 }
 

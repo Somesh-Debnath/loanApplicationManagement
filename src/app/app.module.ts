@@ -16,6 +16,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { AuthGuard } from './auth/AuthGuard';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalComponent } from './components/modal/modal.component';
+
 
 @NgModule({
   declarations: [
@@ -26,14 +30,17 @@ import { AuthGuard } from './auth/AuthGuard';
     NavbarComponent,
     AuthComponent,
     HomeComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

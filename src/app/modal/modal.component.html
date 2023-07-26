@@ -1,0 +1,15 @@
+<!-- modal.component.html -->
+<div *ngIf="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 w-96">
+      <!-- Modal content goes here -->
+      <h1 class="text-4xl text-center font-bold my-3">Welcome !</h1>
+      <p class="text-sm text-center font-semibold leading-4">
+        Add a new loan plan to the system.
+      </p>
+      <!-- Your form content and buttons here -->
+  
+      <!-- Add a close button -->
+      <button class="mt-4 px-4 py-2 bg-[#00A3FE] text-white rounded-md" (click)="onCloseModal()">Close</button>
+    </div>
+  </div>
+  

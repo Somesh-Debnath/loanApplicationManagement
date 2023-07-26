@@ -15,9 +15,10 @@ const routes: Routes = [
   { path: 'login', component: AuthComponent},
   { path: 'add-loan-plan', component: AddLoanPlanFormComponent, canActivate: [AuthGuard] },
   { path: 'edit-loan-plan', component: EditLoanPlanFormComponent, canActivate: [AuthGuard] },
-  { path: 'edit-loan-plan/:id', component: EditLoanPlanFormComponent, canActivate: [AuthGuard]},
+  { path: 'edit-loan-plan/:planId', component: EditLoanPlanFormComponent, canActivate: [AuthGuard]},
   { path: 'loan-plans', component: LoanPlansComponent, canActivate: [AuthGuard] },
-  { path: 'register' , component:RegistrationComponent }
+  { path: 'register' , component:RegistrationComponent },
+  { path: 'modal', loadChildren: () => import('./modal/modal.module').then(m => m.ModalModule) }
 ];
 
 @NgModule({

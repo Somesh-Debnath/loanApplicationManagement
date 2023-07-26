@@ -8,8 +8,9 @@ import { LoanPlan } from '../loanPlan';
 export class EditloanplanService {
 
   constructor(private http:HttpClient) { }
-    editloanplans(loanPlan:LoanPlan){
-      return this.http.put("http://localhost:9093/api/loanplan/{loanPlanId}",loanPlan,{responseType:'text' as 'json'});
+
+    editloanplans(loanPlan:LoanPlan, loanPlanId:number){
+      return this.http.put(`http://localhost:9093/api/loanplan/${loanPlanId}`,loanPlan,{responseType:'text' as 'json'});
     }
   }
 

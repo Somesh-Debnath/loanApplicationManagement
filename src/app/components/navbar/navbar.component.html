@@ -1,55 +1,54 @@
+<div class="flex mt-8">
+  <h1 class="ml-28 pr-80 text-lg font-extrabold text-[#00A3FE]">
+    <a routerLink="/" routerLinkActive="active">LOAN APP</a>
+  </h1>
 
-  <div class="flex mt-8">
-    <h1 class="ml-28 pr-80 text-lg font-extrabold text-[#00A3FE]">
-         LOAN APP
-     </h1>
-     <ul class="flex ml-10 space-x-11">
-      <li>
-        <a routerLink="/" routerLinkActive="active">Home</a>
-      </li>
-      <li>
-        <a routerLink="/loan-plans" routerLinkActive="active">Loan Plans</a>
-      </li>
-      <li *ngIf="(isManagerView$ | async)">
-        <a routerLink="/add-loan-plan" routerLinkActive="active">Add Loan Plan</a>
-      </li>
-      <li *ngIf="(isManagerView$ | async)">
-        <a routerLink="/edit-loan-plan" routerLinkActive="active">Edit Loan Plan</a>
-      </li>
-    </ul>
-    
-  
-     <div class="flex ml-20 space-x-11 mt-[-9px]">
+  <!-- Show content only if the user is a manager (Admin) -->
+  <ng-container *ngIf="userRole.value === 'admin'">
+    <p class="text-blue-600 font-semibold">Welcome, Manager!</p>
+  </ng-container>
+
+  <!-- <ng-container *ngIf="!(isUserAdmin)">
+    <p class="text-blue-600 font-semibold">Welcome, User!</p>
+  </ng-container> -->
+
+  <ul class="flex ml-10 space-x-11">
+    <li>
+      <a routerLink="/" routerLinkActive="active">Home</a>
+    </li>
+    <li>
+      <a routerLink="/loan-plans" routerLinkActive="active">Loan Plans</a>
+    </li>
+    <li *ngIf="userRole.value === 'admin' ">
+      <a routerLink="/add-loan-plan" routerLinkActive="active">Add Loan Plan</a>
+    </li>
+    <!-- <li *ngIf="isUserAdmin ">
+      <a routerLink="/edit-loan-plan" routerLinkActive="active">Edit Loan Plan</a>
+    </li> -->
+  </ul>
+
+  <div class="flex ml-20 space-x-11 mt-[-9px]">
+    <button
+    *ngIf="!isUserLoggedIn; else signedInButton"
+      class="bg-white rounded-full px-6 py-[10px] border-[1px] border-[#00A3FE] text-[#00A3FE] font-semibold"
+      (click)="login()"
+    >
+      Sign In
+    </button>
+
+    <ng-template #signedInButton>
       <button
-      *ngIf="!(isLoggedIn$ | async)"
-        class="bg-white rounded-full px-6 py-[10px] border-[1px] border-[#00A3FE] text-[#00A3FE] font-semibold"
-        (click)="login()"
-      >
-        Sign In
-      </button>
-  
-      <button
-      *ngIf="(isLoggedIn$ | async)"
         class="bg-white rounded-full px-6 py-[10px] border-[1px] border-[#00A3FE] text-[#00A3FE] font-semibold"
         (click)="logout()"
       >
         Sign Out
       </button>
-  
-      <button
-        class="bg-[#00A3FE] ml-12 px-12 py-[10px] rounded-full text-white font-semibold"
-        >
-        Register as a Banker
-      </button>
-    </div>
-  </div>
-  
-  
-  
-  
-  
-  
-  
-  
+    </ng-template>
 
-  
+    <!-- <button
+      class="bg-[#00A3FE] ml-12 px-12 py-[10px] rounded-full text-white font-semibold"
+      >
+      Register as a Banker
+    </button> -->
+  </div>
+</div>

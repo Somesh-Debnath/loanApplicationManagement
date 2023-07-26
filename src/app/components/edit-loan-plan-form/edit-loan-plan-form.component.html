@@ -1,22 +1,22 @@
-<h2>Edit Loan Plan</h2>
+<h2 class="text-center font-bold">Edit Loan Plan</h2>
+<p class="text-center my-2 font-semibold">Edit the plan Name and Valdity of the loan Plan</p>
+<div class="flex flex-col items-center mx-auto justify-center mt-16">
+  <form class=" mx-auto" [formGroup]="loanPlanForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="planName">Plan Name:</label>
+      <input type="text" id="planName" name="planName" formControlName="planName">
+    </div>
 
-<!-- Form to edit loan plan details -->
-<form  #loanPlanForm="ngForm">
-  <div>
-    <label for="planName">Plan Name:</label>
-    <input type="text" id="planName" name="planName"  required>
+    <div>
+      <label for="planValidity">Validity:</label>
+      <input type="date" id="planValidity" name="planValidity" formControlName="planValidity">
+    </div>
+
+    <button type="submit" [disabled]="loanPlanForm.invalid">Submit</button>
+  </form>
+
+  <!-- Display acknowledgement if submitted -->
+  <div *ngIf="submitted">
+    <h3>Loan Plan Updated Successfully</h3>
   </div>
-
-  <div>
-    <label for="validity">Validity:</label>
-    <input type="text" id="validity" name="validity"  required>
-  </div>
-
-  <button type="submit" [disabled]="loanPlanForm.invalid">Submit</button>
-</form>
-
-<!-- Display acknowledgement if submitted -->
-<div>
-  <h3>Acknowledgement</h3>
-  <p>Loan Plan Updated Successfully!</p>
 </div>

@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { LoanPlan, interestRates } from 'src/app/loanPlan';
 import { AddLoanPlanService } from 'src/app/services/add-loan-plan.service';
 
@@ -9,15 +11,19 @@ import { AddLoanPlanService } from 'src/app/services/add-loan-plan.service';
   templateUrl: './add-loan-plan-form.component.html',
   styleUrls: ['./add-loan-plan-form.component.css'],
 })
+
 export class AddLoanPlanFormComponent implements OnInit {
   loanPlanForm: FormGroup;
   submitted = false;
   loanPlan: LoanPlan;
   interestRates: interestRates[];
-  @ViewChild('demoModal') demoModal: ElementRef;
-  @ViewChild('closeButton') closeButton: ElementRef;  
+  isModalOpen: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private service: AddLoanPlanService, private renderer: Renderer2) { }
+  constructor(private formBuilder: FormBuilder, 
+    private service: AddLoanPlanService, 
+    private renderer: Renderer2,
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.service.getInterestRates().subscribe((data) => {
@@ -36,7 +42,7 @@ export class AddLoanPlanFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
+    
     // Perform calculations based on the form values
     const principalAmount = this.loanPlanForm.value.principalAmount;
     const tenure = this.loanPlanForm.value.tenure;
@@ -47,10 +53,6 @@ export class AddLoanPlanFormComponent implements OnInit {
       (rate) => rate.id === selectedLoanType
     );
     console.log(selectedInterestRate);
-
-    // Calculate the interest rate based on the loan type and tenure
-    //const baseInterestRate = selectedInterestRate.baseInterestRate;
-
     let interestRateIncrement = 0;
     if (principalAmount >= 500000 && principalAmount <= 2000000) {
       if (tenure >= 5 && tenure <= 20) {
@@ -81,7 +83,7 @@ export class AddLoanPlanFormComponent implements OnInit {
 
     // Create a LoanPlan object with the calculated values
     const loanPlan: LoanPlan = {
-      loanPlanName: this.loanPlanForm.value.planName,
+      planName: this.loanPlanForm.value.planName,
       principalAmount: principalAmount,
       tenure: tenure,
       planValidity: this.loanPlanForm.value.planValidity,
@@ -94,27 +96,28 @@ export class AddLoanPlanFormComponent implements OnInit {
 
     // Call the service to add the loan plan
     this.service.addLoanPlan(loanPlan).subscribe((data) => {
+      this.submitted = true;
+      alert('Loan plan added successfully');
       console.log(data);
+    },
+    (error) => {
+      alert('Error occured while adding the loan plan');
+      console.log(error);
     });
-
     // Assign the calculated values to the loanPlan object after submission
     loanPlan.totalPayable = totalPayable;
     loanPlan.emi = emi;
 
     // Update the loanPlan property of the component to display the values in the template
     this.loanPlan = loanPlan;
-    this.openModal();
+  
   }
-
   openModal() {
-    const modalElement = this.demoModal.nativeElement;
-    this.renderer.setStyle(modalElement, 'display', 'block');
-    this.renderer.addClass(modalElement, 'show');
+    this.router.navigate(['modal']);
   }
   closeModal() {
-    const modalElement = this.demoModal.nativeElement;
-    this.renderer.setStyle(modalElement, 'display', 'none');
-    this.renderer.removeClass(modalElement, 'show');
+    this.isModalOpen = false;
   }
+
   
 }

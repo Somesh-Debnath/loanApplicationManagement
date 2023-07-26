@@ -12,8 +12,8 @@ export class LoanplanService {
     return this.http.get('http://localhost:9093/api/loanplans');
   }
 
-  getLoanPlanBy(loanPlanId: number) {
-    return this.http.get('http://localhost:9093/api/loanplan/' + loanPlanId);
+  getLoanPlanByPlanId(loanPlanId: number) {
+    return this.http.get('http://localhost:9093/api/loanplans/' + loanPlanId);
   }
 
 }
