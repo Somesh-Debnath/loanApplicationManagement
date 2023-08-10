@@ -1,27 +1,53 @@
-# LoanApplicationManagement
+# Loan Application Management
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+Welcome to the Loan Application Management repository! This Angular-based application is designed to streamline the process of creating, managing, and editing loan plans. The current stage of development is focused on Front-end design.
 
-## Development server
+## Components
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### AddLoanPlanFormComponent
 
-## Code scaffolding
+Bank managers can use this component to effortlessly add new loan plans to the system. Key features include:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Navigation**: Accessible from the main menu.
+- **Form**: Allows input of plan details, including plan type (dropdown list), tenure (range slider), and interest rate (range slider).
+- **Validation**: Ensures entered data is accurate before enabling submission.
+- **Submission**: Provides an acknowledgment display along with interest amount, total payable, and EMI amount upon successful submission.
 
-## Build
+### LoanPlansComponent
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Designed for both customers and bank managers, this component offers the following functionality:
 
-## Running unit tests
+- **Navigation**: Easily accessible through the navbar.
+- **Display**: Presents loan plan details in bootstrap cards.
+- **Toggle Switch**: Radio buttons facilitate switching between customer and bank manager views.
+- **Bank Manager View**: Each card features an edit button that redirects to the EditLoanPlanFormComponent, passing the plan ID as a route parameter.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### EditLoanPlanFormComponent
 
-## Running end-to-end tests
+Bank managers can utilize this component to modify loan plan details. Noteworthy features include:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Navigation**: Accessible via the navbar.
+- **Fetch and Display**: Retrieves and displays existing loan plan details using the provided plan ID as a route parameter.
+- **Editable Fields**: Permits modifications exclusively to plan validity and plan name.
+- **Validation**: Ensures modified details are valid before submission.
+- **Submission**: Acknowledgment display upon successful submission.
 
-## Further help
+## Integration of Frontend and Backend
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The "Integration of Frontend and Backend" stage involves the following steps:
+
+1. **Data Service**: Creation of a data service within the frontend application, responsible for communicating with micro-services.
+2. **API Interaction**: Utilization of the data service in various components to facilitate interaction with the API.
+3. **Error Handling**: Implementation of informative error messages based on different response status codes received from the API.
+
+## Getting Started
+
+To begin working with the loan application management system, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Install necessary dependencies using `npm install`.
+3. Run the application with `ng serve`.
+4. Access the application in your browser at `http://localhost:4200`.
+
+
+
