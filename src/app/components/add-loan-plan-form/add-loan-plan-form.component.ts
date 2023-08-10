@@ -98,6 +98,7 @@ export class AddLoanPlanFormComponent implements OnInit {
     this.service.addLoanPlan(loanPlan).subscribe((data) => {
       this.submitted = true;
       alert('Loan plan added successfully');
+      this.router.navigate(['loan-plans']);
       console.log(data);
     },
     (error) => {

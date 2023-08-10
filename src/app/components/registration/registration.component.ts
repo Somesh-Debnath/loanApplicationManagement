@@ -56,14 +56,16 @@ export class RegistrationComponent implements OnInit {
     this.loading = true;
     this.credentials.email=this.registerForm.value.email;
     this.credentials.password=this.registerForm.value.password;
-    this.credentials.name=this.registerForm.value.name;
+    if(this.credentials.name !== "Admin"){
+      this.credentials.name="User"
+    }
 
     this.registerService.doRegister(this.credentials).subscribe(
       (response:any)=>{
         console.log(response);
-        if(response.status==200){
+        
           alert("Registration successful");
-        }
+        
       },
       (error)=>{
         console.log(error);

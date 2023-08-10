@@ -80,7 +80,7 @@ export class AuthComponent {
       },
       (error) => {
         console.log(error);
-        alert('Something went wrong');
+        alert('Invalid credentials');
       }
     );
     
